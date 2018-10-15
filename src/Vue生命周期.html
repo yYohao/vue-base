@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <p v-if="isShow">{{str1}}</p>
+    <p v-else>{{str2}}</p>
+    <button @click="destroy()">销毁</button>
+</div>
+<script src="./vue.js"></script>
+<script>
+    let vm = new Vue({
+        el: "#app",
+        data :{
+            isShow : true,
+            str1: 'hhhhh',
+            str2: 'yyyyy',
+        },
+        methods: {
+            destroy(){
+                this.$destroy();
+            }
+        },
+        beforeCreate(){
+            console.log('beforeCreate()');
+        },
+        created(){
+            console.log('created()');
+        },
+        beforeMount(){
+            console.log('beforeMount()');
+        },
+        mounted(){
+            console.log('mounted()');
+            //设置定时器必须要手动清除，不然会造成内存泄露
+            this.interval = setInterval(()=>{
+                console.log('++++++++++');
+                this.isShow = !this.isShow;
+            }, 1000)
+        },
+        beforeUpdate(){
+            console.log('beforeUpdate()');
+        },
+        updated(){
+            console.log('updated()');
+        },
+        beforeDestroy(){
+            console.log('beforeDestroy()');
+            //销毁定时器
+            clearInterval(this.interval);
+        },
+        destroyed(){
+            console.log('destroyed()');
+        }
+    })
+</script>
+</body>
+</html>

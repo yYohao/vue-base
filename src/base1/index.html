@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<!--<div id="app">{{message}}</div>-->
+<!--<div id="app-2">-->
+    <!--<span v-bind:title="message">-->
+        <!--鼠标悬停-->
+    <!--</span>-->
+<!--</div>-->
+<!--<div id="app-3">-->
+    <!--<span v-if="seen">现在可以看到我</span>-->
+<!--</div>-->
+<div id="app-4">
+    <ol>
+        <li v-for="todo in todos">
+            {{todo.text}}
+        </li>
+    </ol>
+</div>
+<div id="app-5">
+    <p>{{message}}</p>
+    <button v-on:click="reverseMessage">翻转</button>
+</div>
+<script src="index.js"></script>
+</body>
+</html>
